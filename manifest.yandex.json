@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Ramiora",
+  "version": "1.0.0",
+  "description": "Ramiora — новая вкладка с темами, поиском и интерактивными элементами.",
+  "action": {
+    "default_title": "Открыть Ramiora"
+  },
+  "background": {
+    "service_worker": "yandex-background.js"
+  },
+  "permissions": ["storage"],
+  "host_permissions": ["https://wttr.in/*"]
+}

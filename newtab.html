@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ramiora</title><link rel="icon" type="image/png" href="ramiora-favicon.png"><link rel="stylesheet" href="style.css"></head>
+<body>
+<main class="scene">
+  <div class="background"></div>
+  <div class="glass-panel"></div>
+  <img class="character character-right" src="zhongli-lord.png" alt="">
+  <nav class="dock" id="siteDock" aria-label="Быстрые ссылки">
+    <button class="app add" id="addLink" title="Добавить ссылку" aria-label="Добавить ссылку"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+  </nav>
+
+  <section class="clock-block">
+    <svg class="clock-orbit" viewBox="0 0 352 262" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="orbitLine" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#f7d9b0" stop-opacity="0" />
+          <stop offset=".22" stop-color="#f7d9b0" stop-opacity=".78" />
+          <stop offset=".72" stop-color="#fff2dd" stop-opacity=".9" />
+          <stop offset="1" stop-color="#f7d9b0" stop-opacity="0" />
+        </linearGradient>
+        <filter id="orbitGlow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3.5" /></filter>
+      </defs>
+      <image href="Orbite.svg" x="0" y="0" width="352" height="262" preserveAspectRatio="none" />
+      <g class="orbit-star orbit-star-main" transform="translate(346 13)"><path d="M0-9 L2.2-2.2 L9 0 L2.2 2.2 L0 9 L-2.2 2.2 L-9 0 L-2.2-2.2Z" /><circle r="2.2" /></g>
+      <g class="orbit-star orbit-star-small" transform="translate(6 248)"><path d="M0-6 L1.4-1.4 L6 0 L1.4 1.4 L0 6 L-1.4 1.4 L-6 0 L-1.4-1.4Z" /><circle r="1.5" /></g>
+      <g class="orbit-star orbit-star-large star-d" transform="translate(51 42)"><path d="M0-9 L2.2-2.2 L9 0 L2.2 2.2 L0 9 L-2.2 2.2 L-9 0 L-2.2-2.2Z" /><circle r="2.2" /></g>
+      <g class="orbit-star orbit-star-large star-g" transform="translate(306 240)"><path d="M0-9 L2.2-2.2 L9 0 L2.2 2.2 L0 9 L-2.2 2.2 L-9 0 L-2.2-2.2Z" /><circle r="2.2" /></g>
+      <g class="orbit-star orbit-star-large star-i" transform="translate(45 239)"><path d="M0-8 L2-2 L8 0 L2 2 L0 8 L-2 2 L-8 0 L-2-2Z" /><circle r="2" /></g>
+    </svg>
+    <div id="time">10:30</div><div id="date">11 ноября</div><div id="weather"></div>
+  </section>
+
+  <div class="top-actions" aria-label="Меню">
+    <button id="appsButton" class="round" title="Приложения Google" aria-label="Приложения Google"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="1.5"></circle><circle cx="12" cy="6" r="1.5"></circle><circle cx="18" cy="6" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="12" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle><circle cx="6" cy="18" r="1.5"></circle><circle cx="12" cy="18" r="1.5"></circle><circle cx="18" cy="18" r="1.5"></circle></svg></button>
+    <button id="settingsButton" class="round settings-icon" title="Настройки оформления" aria-label="Настройки оформления"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94c.04-.3.06-.61.06-.94s-.02-.64-.07-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.61-.22l-2.39.96a7.28 7.28 0 0 0-1.63-.95l-.36-2.54a.49.49 0 0 0-.49-.42h-3.84a.49.49 0 0 0-.49.42l-.36 2.54c-.6.24-1.14.56-1.63.95l-2.39-.96a.5.5 0 0 0-.61.22L2.63 8.84a.5.5 0 0 0 .12.64l2.03 1.58a6.5 6.5 0 0 0 0 1.88l-2.03 1.58a.5.5 0 0 0-.12.64l1.92 3.32c.12.21.37.3.61.22l2.39-.96c.49.39 1.03.71 1.63.95l.36 2.54c.03.24.24.42.49.42h3.84c.25 0 .46-.18.49-.42l.36-2.54c.6-.24 1.14-.56 1.63-.95l2.39.96c.24.09.49-.01.61-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58ZM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Z"></path></svg></button>
+  </div>
+
+  <section class="welcome">
+    <h1><span id="greetingText">К звёздам и к безднам!</span><br id="greetingBreak"><span id="greetingName">Путешественник</span></h1>
+    <div class="ornament"><i></i><b>✧</b><i></i></div>
+  </section>
+
+  <section class="menu-popover google-apps hidden" id="appsPanel" aria-label="Приложения Google">
+    <header><strong id="appsTitle">Приложения Google</strong><button class="popover-close" data-close="appsPanel" aria-label="Закрыть">×</button></header>
+    <div class="apps-grid">
+      <a href="https://mail.google.com/" target="_blank" rel="noopener"><b class="gmail"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M6 38V15l6 4.5V38z"/><path fill="#34A853" d="M36 38V19.5l6-4.5v23z"/><path fill="#EA4335" d="M6 15l6-5 12 9 12-9 6 5-18 14z"/><path fill="#C5221F" d="M36 10l6 5v4.5l-6 4.5z"/><path fill="#FBBC04" d="M6 15l6-5v14l-6-4.5z"/></svg></b><span>Почта</span></a>
+      <a href="https://drive.google.com/" target="_blank" rel="noopener"><b class="drive"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#00832D" d="M17 6h10l15 26H31z"/><path fill="#0066DA" d="M11 27h30l-5.5 9.5H5.5z"/><path fill="#00AC47" d="M17 6h10L12 32 5.5 36.5z"/><path fill="#2684FC" d="M11 27h11l-5.5 9.5H5.5z"/><path fill="#FFBA00" d="M31 27h10l-5.5 9.5h-10z"/></svg></b><span>Диск</span></a>
+      <a href="https://gemini.google.com/" target="_blank" rel="noopener"><b class="gemini"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="geminiGradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4285F4"/><stop offset=".5" stop-color="#9B72CB"/><stop offset="1" stop-color="#D96570"/></linearGradient></defs><path fill="url(#geminiGradient)" d="M24 2c2.5 11.5 8.5 17.5 22 22-13.5 4.5-19.5 10.5-22 22C21.5 34.5 15.5 28.5 2 24 15.5 19.5 21.5 13.5 24 2z"/></svg></b><span>Gemini</span></a>
+      <a href="https://docs.google.com/" target="_blank" rel="noopener"><b class="docs"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M11 4h18l10 10v29H11z"/><path fill="#A1C2FA" d="M29 4v11h10z"/><path stroke="#fff" stroke-width="2.5" d="M18 24h14M18 30h14M18 36h10"/></svg></b><span>Документы</span></a>
+      <a href="https://sheets.google.com/" target="_blank" rel="noopener"><b class="sheets"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#34A853" d="M11 4h18l10 10v29H11z"/><path fill="#A8DAB5" d="M29 4v11h10z"/><path stroke="#fff" stroke-width="2" d="M17 22h16M17 28h16M17 34h16M22 20v17M28 20v17"/></svg></b><span>Таблицы</span></a>
+      <a href="https://slides.google.com/" target="_blank" rel="noopener"><b class="slides"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#F9AB00" d="M9 6h30v36H9z"/><path fill="#FDE293" d="M13 10h22v18H13z"/><path fill="#fff" d="M16 13h16v12H16z"/></svg></b><span>Презентации</span></a>
+    </div>
+  </section>
+
+  <section class="puzzle-card">
+    <div id="puzzleGrid" class="puzzle-grid"></div>
+    <img id="completedPuzzle" class="completed-puzzle" alt="Собранная картинка">
+  </section>
+
+  <div class="search-bar">
+    <span class="search-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="10.8" cy="10.8" r="6.4"></circle><path d="m15.5 15.5 5 5"></path></svg></span>
+    <form id="searchForm">
+      <input id="searchInput" type="search" placeholder="Поиск..." autocomplete="off" aria-label="Поиск">
+      <button class="mic" type="button" id="voiceButton" title="Голосовой ввод" aria-label="Голосовой ввод"><svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M6.5 11.5a5.5 5.5 0 0 0 11 0M12 17v4m-3 0h6"></path></svg></button>
+      <button class="search-btn" type="submit">Найти</button>
+      <button class="ai-btn" type="button" id="aiButton">✧ Режим ИИ</button>
+    </form>
+  </div>
+
+  <section class="settings hidden" id="settingsPanel">
+    <aside class="settings-sidebar">
+      <div class="settings-brand"><span>⚙</span><strong>Настройки</strong></div>
+      <button class="settings-nav active" type="button" data-settings-tab="themes"><span>✦</span>Темы</button>
+      <button class="settings-nav" type="button" data-settings-tab="sidebar"><span>⌘</span>Боковая панель</button>
+      <button class="settings-nav" type="button" data-settings-tab="games"><span>▦</span>Мини-игры</button>
+      <div class="settings-credit"><span>Разработчик Рамиля</span><a href="mailto:www.ramily@rambler.ru">Почта для связи<br>www.ramily@rambler.ru</a></div>
+    </aside>
+    <div class="settings-content">
+      <header class="settings-title"><div><strong>Оформление</strong><small>Настройте внешний вид новой вкладки</small></div><button id="closeSettings" aria-label="Закрыть">×</button></header>
+
+      <section id="themeDashboard" class="settings-tab settings-tab-themes">
+        <div class="settings-section-heading"><div><strong>Темы архонтов</strong><small>Персонаж, фон и стиль в одной карточке</small></div></div>
+        <div id="themeGrid" class="theme-grid">
+          <button class="archon-theme theme-anemo" type="button" data-theme-name="Песнь ветра" data-character="venti.png" data-background="mondstadt-rainbow.png"><span class="theme-art" style="--theme-image:url('theme-wind.jpg')"><i>🍃</i></span><b>Песнь ветра</b><small>Венти</small></button>
+          <button class="archon-theme theme-geo selected" type="button" data-theme-name="Наследие камня" data-character="zhongli-lord.png" data-background="star-city-waterfalls.png"><span class="theme-art" style="--theme-image:url('theme-stone.jpg')"><i>◈</i></span><b>Наследие камня</b><small>Чжун Ли</small></button>
+          <button class="archon-theme theme-electro" type="button" data-theme-name="Гроза Инадзумы" data-character="raiden.png" data-background="inazuma-luminous-village.png"><span class="theme-art" style="--theme-image:url('theme-thunder.jpg')"><i>⚡</i></span><b>Гроза Инадзумы</b><small>Райден</small></button>
+          <button class="archon-theme theme-dendro" type="button" data-theme-name="Сны Сумеру" data-character="nahida.png" data-background="sumeru-ancient-tree-city.png"><span class="theme-art" style="--theme-image:url('theme-dreams.jpg')"><i>🌿</i></span><b>Сны Сумеру</b><small>Нахида</small></button>
+          <button class="archon-theme theme-hydro" type="button" data-theme-name="Водный бал" data-character="furina.png" data-background="fontaine-azure-lake.png"><span class="theme-art" style="--theme-image:url('theme-water.jpg')"><i>💧</i></span><b>Водный бал</b><small>Фурина</small></button>
+          <button class="archon-theme theme-pyro" type="button" data-theme-name="Пламя Натлана" data-character="mavuika.png" data-background="natlan-canyon-fortress.png"><span class="theme-art" style="--theme-image:url('theme-fire.jpg')"><i>🔥</i></span><b>Пламя Натлана</b><small>Мавуика</small></button>
+          <button class="archon-theme theme-void" type="button" data-theme-name="Лунное затмение" data-character="columbina.png" data-background="frost-obelisk-valley.png"><span class="theme-art" style="--theme-image:url('theme-moon.jpg')"><i>◐</i></span><b>Лунное затмение</b><small>Царица</small></button>
+          <button class="archon-theme theme-cryo" type="button" data-theme-name="Вечная зима" data-character="winter-tsaritsa.png" data-background="winter-moon-express.png"><span class="theme-art" style="--theme-image:url('theme-winter.jpg')"><i>❄</i></span><b>Вечная зима</b><small>Крио</small></button>
+          <button id="addThemeButton" class="archon-theme add-theme-card" type="button"><span class="theme-add-icon">+</span><b>Добавить свою тему</b><small>Персонаж · фон</small></button>
+        </div>
+      </section>
+
+      <section class="settings-group settings-section games-section page-options">
+        <div class="settings-group-title"><strong>▦　Элементы страницы</strong></div>
+        <label class="settings-toggle"><span>Пятнашки</span><input id="puzzleToggle" type="checkbox" checked><i></i></label>
+      </section>
+      <section class="settings-group settings-section sidebar-section sites-settings">
+        <div class="settings-group-title"><strong>🔗　Сайты боковой панели</strong></div>
+        <p class="settings-help">Добавляйте и редактируйте название и URL здесь</p>
+        <div class="site-manager-head" aria-hidden="true"><span></span><span>Название сайта</span><span>Ссылка</span><span></span></div>
+        <div id="siteManagerList" class="site-manager-list"></div>
+        <button id="addSiteButton" class="site-manager-add" type="button">＋ Добавить</button>
+      </section>
+      <section class="settings-group settings-section theme-section current-settings">
+        <div class="settings-group-title"><strong>✎　Приветствие и погода</strong></div>
+        <div class="settings-fields"><label>Фраза приветствия<input id="greetingInput" maxlength="36" placeholder="Приветствие"></label><label>Имя<input id="nameInput" maxlength="36" placeholder="Имя"></label><label>Город для погоды<input id="cityInput" maxlength="50" placeholder="Город"></label><label class="search-engine-field">Поисковая строка<select id="searchEngineInput"><option value="google">Google</option><option value="yandex">Яндекс</option></select></label></div>
+      </section>
+    </div>
+    <div id="customThemeModal" class="custom-theme-modal hidden">
+      <div id="customThemeForm" class="custom-theme-form" role="dialog" aria-modal="true" aria-labelledby="customThemeTitle">
+        <div class="settings-section-heading"><div><strong id="customThemeTitle">Новая тема</strong><small>Выберите материалы для своей темы</small></div><button id="cancelThemeButton" type="button" aria-label="Закрыть">×</button></div>
+        <a class="theme-library-link" href="https://drive.google.com/drive/folders/1HwXBwPyVByEW36SAinm-o-MRRxBlvWtA?usp=sharing" target="_blank" rel="noopener noreferrer">Открыть готовые темы</a>
+        <label>Название темы<input id="themeNameInput" maxlength="30" placeholder="Моя тема"></label>
+        <div class="custom-theme-fields"><label>Персонаж<input id="themeCharacterUpload" type="file" accept="image/*"></label><label>Фон<input id="themeBackgroundUpload" type="file" accept="image/*"></label></div>
+        <button id="saveThemeButton" class="theme-save-button" type="button">Добавить тему</button>
+      </div>
+    </div>
+  </section>
+  <div id="toast" class="toast"></div>
+</main>
+<script src="newtab.js"></script></body></html>
