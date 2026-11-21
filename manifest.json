@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Ramiora",
+  "version": "1.0.0",
+  "description": "Ramiora — новая вкладка Chrome с темами, поиском и интерактивными элементами.",
+  "chrome_url_overrides": {"newtab": "newtab.html"},
+  "action": {"default_title": "Открыть Ramiora"},
+  "background": {"service_worker": "background.js"},
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["https://wttr.in/*"]
+}
